@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fit Mind</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      max-width: 900px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image-wrapper:hover {
+      transform: scale(1.05);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px;
+      font-size: 1em;
+    }
+
+    .bottom-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    function redirectToPage1() {
+      window.location.href = 'index.html';
+    }
+
+    function redirectToPage2() {
+      window.location.href = 'mnd.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1><b>Fit Mind</b></h1>
+    <div class="quote">"A fit body, a calm mind, a house full of love. These things cannot be bought – they must be earned."</div>
+    <div class="images">
+      <div class="image-wrapper" onclick="redirectToPage1()">
+        <img src="./images/physical.jpeg" alt="Fitness Image 1">
+        <div class="image-overlay">Physical Activity</div>
+      </div>
+      <div class="image-wrapper" onclick="redirectToPage2()">
+        <img src="images/mind.jpeg" alt="Fitness Image 2">
+        <div class="image-overlay">Mindfulness</div>
+      </div>
+    </div>
+    <div class="bottom-section">
+      <p>Fit Mind is dedicated to empowering individuals to achieve a profound balance between physical fitness and mental well-being. Our mission is to guide you on a transformative journey, cultivating both strength in body and serenity in mind. We believe that by integrating exercise, mindfulness, and self-awareness, you'll unlock a deeper connection with yourself and the world around you. Join us in embracing a holistic approach to wellness, and discover a more vibrant, resilient, and fulfilling you.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meditation Timer</title>
+  <style>
+    body {
+      background-image:url(./images/WhatsApp\ Image\ 2025-03-29\ at\ 10.21.33_6a88f300.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100px;
+      width: 100vw; 
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .clock {
+      width: 200px;
+      height: 200px;
+      border: 10px solid #333;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      width: 2px;
+      background-color: #333;
+      transform-origin: 50% 100%;
+      transform: translateX(-50%) rotate(0deg);
+      transition: transform 0.5s linear;
+    }
+
+    .minute-hand { height: 70px; background-color: #555; }
+    .second-hand { height: 90px; background-color: #f00; }
+
+    .time-display {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    input {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      width: 70px;
+      padding: 5px;
+      margin-right: 10px;
+    }
+
+    button {
+      border-end-end-radius: 10px;
+      border-end-start-radius: 10px;
+      border-start-end-radius: 10px;
+      background-color: aqua;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #07f3c8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Meditation Timer</h1>
+  <div class="container">
+    <div class="timer">
+      <div class="clock">
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+      <div class="time-display" id="timeDisplay">00:00</div>
+      <input type="number" id="timeInput" min="1" max="5" value="1">
+      <button id="startButton">Start Timer</button>
+      <button id="resetButton">Reset</button>
+    </div>
+  </div>
+  <script>
+    let timerInterval;
+    let totalTime;
+    let remainingTime;
+    
+    const timeDisplay = document.getElementById('timeDisplay');
+    const timeInput = document.getElementById('timeInput');
+    const startButton = document.getElementById('startButton');
+    const resetButton = document.getElementById('resetButton');
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.minute-hand');
+
+    startButton.addEventListener('click', () => {
+      clearInterval(timerInterval);
+      const minutes = parseInt(timeInput.value);
+      if (isNaN(minutes) || minutes < 1 || minutes > 5) {
+        alert('Please enter a number between 1 and 5.');
+        return;
+      }
+      totalTime = minutes * 60;
+      remainingTime = totalTime;
+      updateTimeDisplay();
+      startTimer();
+    });
+
+    resetButton.addEventListener('click', resetTimer);
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        remainingTime--;
+        updateTimeDisplay();
+        updateClockHands();
+        if (remainingTime <= 0) {
+          clearInterval(timerInterval);
+          alert('Time is up!');
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      remainingTime = 0;
+      updateTimeDisplay();
+      resetClockHands();
+    }
+
+    function updateTimeDisplay() {
+      const minutes = Math.floor(remainingTime / 60);
+      const seconds = remainingTime % 60;
+      timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function updateClockHands() {
+      const secondsRotation = (remainingTime % 60) * 6;
+      const minutesRotation = ((remainingTime / 60) % 60) * 6;
+
+      secondHand.style.transform = `translateX(-50%) rotate(${secondsRotation}deg)`;
+      minuteHand.style.transform = `translateX(-50%) rotate(${minutesRotation}deg)`;
+    }
+
+    function resetClockHands() {
+      secondHand.style.transform = 'translateX(-50%) rotate(0deg)';
+      minuteHand.style.transform = 'translateX(-50%) rotate(0deg)';
+    }
+  </script>
+</body>
+</html>

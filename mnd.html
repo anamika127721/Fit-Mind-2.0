@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindfulness</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1523978591478-c753949ff840?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      font-family: cursive;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin-bottom: 20px;
+    }
+    header h2 {
+      color: black;
+    }
+
+    nav ul {
+      list-style: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    #image-section {
+      text-align: center;
+      margin: 40px auto;
+      position: relative;
+      max-width: 90vw;
+      height: 60vh;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .slider {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 1s ease-in-out;
+      height: 100%;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+      background-color: black;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+      z-index: 2;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    #content-section {
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: 50px auto;
+      padding: 40px;
+      border-radius: 20px;
+      width: 80%;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    #content-section p {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MINDFULNESS</h1>
+    <h2>.</h2>
+    <nav>
+      <ul>
+        <li><a href="new home.html">Home</a></li>
+        <li><a href="./products.html">Products</a></li>
+        <li><a href="./timer.html">Meditation Timer</a></li>
+        <li><a href="https://open.spotify.com/playlist/4BQdJXoGq6wXvPT64nRRYf?si=kukQXqIISBClm9UWaL0-ww">Music</a></li>
+        <li><a href="https://hrzone.com/how-mindfulness-practice-has-changed-my-life-a-personal-story/">Blogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="image-section">
+    <div class="slider">
+      <div class="slides">
+        <img src="./images/WhatsApp Image 2025-03-31 at 15.49.28_7d2e7f49.jpg" alt="Mindfulness Image 1">
+        <img src="./images/WhatsApp Image 2025-03-29 at 10.28.54_f5cdc6ac.jpg" alt="Mindfulness Image 2">
+        <img src="./images/WhatsApp Image 2025-03-31 at 15.49.28_74df5909.jpg" alt="Mindfulness Image 3">
+        <img src="./images/WhatsApp Image 2025-03-31 at 15.49.28_3a385e19.jpg" alt="Mindfulness Image 4">
+      </div>
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <script>
+    let index = 0;
+    function moveSlide(direction) {
+      const slides = document.querySelector(".slides");
+      const totalSlides = document.querySelectorAll(".slides img").length;
+      index = (index + direction + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+    setInterval(() => moveSlide(1), 5000);
+  </script>
+
+  <section id="content-section">
+    <p>Mindfulness is a deceptively simple way of relating to all experience that can reduce suffering and set the stage for positive personal transformation.</p>
+    <p><strong>What Is Mindfulness?</strong></p>
+    <p>Mindfulness is a form of meditative practice that elevates present-moment awareness (Ludwig & Kabat-Zinn, 2008).</p>
+    <p>The mental and physical benefits of this type of exercise are well documented within the literature and practiced worldwide.</p>
+    <p>Mindfulness is the practice of being present and fully engaged in the current moment, without judgment. It involves paying attention to thoughts, feelings, and sensations as they arise.</p>
+    <p><strong>Benefits include:</strong></p>
+    <ul>
+      <li>Reduced stress and anxiety</li>
+      <li>Improved focus and concentration</li>
+      <li>Increased self-awareness</li>
+      <li>Greater emotional regulation</li>
+      <li>Enhanced overall well-being</li>
+    </ul>
+    <p>While mindfulness is often associated with meditation, it's a way of being in the world that can be practiced in everyday activities like eating, walking, or working.</p>
+    <p><strong>Mindfulness-Based Stress Reduction (MBSR):</strong> A program developed by Jon Kabat-Zinn to reduce stress and improve well-being through mindfulness.</p>
+    <p>Though rooted in Buddhist practices, mindfulness is a secular and accessible method for enhancing life regardless of belief systems.</p>
+  </section>
+</body>
+</html>
